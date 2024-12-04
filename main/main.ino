@@ -25,7 +25,7 @@ const char* password = "katasandi";
 #include "camera_pins.h"
 
 // Relay configuration
-#define Relay 2 // relay IO2
+#define Relay 12 // relay IO12
 
 using namespace websockets;
 
@@ -203,8 +203,8 @@ void setup() {
 static esp_err_t index_handler(httpd_req_t *req) {
   // Handle HTML interface
   httpd_resp_set_type(req, "text/html");
-  httpd_resp_set_hdr(req, "Content-Encoding", "gzip");
-  return httpd_resp_send(req, (const char *)index_ov2640_html_gz, index_ov2640_html_gz_len);
+  httpd_resp_set_hdr(req, "Content-Encoding", "identity");
+  return httpd_resp_send(req, (const char *)index_ov2640_html, index_ov2640_html_len);
 }
 
 httpd_uri_t index_uri = {
